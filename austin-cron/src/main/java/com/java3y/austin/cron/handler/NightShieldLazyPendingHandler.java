@@ -1,8 +1,8 @@
 package com.java3y.austin.cron.handler;
 
 import cn.hutool.core.text.CharSequenceUtil;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.JSONWriter;
 import com.google.common.base.Throwables;
 import com.java3y.austin.common.domain.TaskInfo;
 import com.java3y.austin.support.config.SupportThreadPoolConfig;
@@ -49,7 +49,7 @@ public class NightShieldLazyPendingHandler {
                 if (CharSequenceUtil.isNotBlank(taskInfo)) {
                     try {
                         kafkaTemplate.send(topicName, JSON.toJSONString(Collections.singletonList(JSON.parseObject(taskInfo, TaskInfo.class))
-                                , SerializerFeature.WriteClassName));
+                                , JSONWriter.Feature.WriteClassName));
                     } catch (Exception e) {
                         log.error("nightShieldLazyJob send kafka fail! e:{},params:{}", Throwables.getStackTraceAsString(e), taskInfo);
                     }
