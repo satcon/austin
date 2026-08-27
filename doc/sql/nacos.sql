@@ -31,9 +31,9 @@ CREATE TABLE IF NOT EXISTS `config_info`
 CREATE TABLE IF NOT EXISTS `config_info_aggr`
 (
     `id`           BIGINT(20)   NOT NULL AUTO_INCREMENT COMMENT 'id',
-    `data_id`      VARCHAR(255) NOT NULL COMMENT 'data_id',
-    `group_id`     VARCHAR(255) NOT NULL COMMENT 'group_id',
-    `datum_id`     VARCHAR(255) NOT NULL COMMENT 'datum_id',
+    `data_id`      VARCHAR(128 NOT NULL COMMENT 'data_id',
+    `group_id`     VARCHAR(128) NOT NULL COMMENT 'group_id',
+    `datum_id`     VARCHAR(128) NOT NULL COMMENT 'datum_id',
     `content`      LONGTEXT     NOT NULL COMMENT '内容',
     `gmt_modified` DATETIME     NOT NULL COMMENT '修改时间',
     `app_name`     VARCHAR(128) DEFAULT NULL,
